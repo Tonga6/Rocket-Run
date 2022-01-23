@@ -1,9 +1,8 @@
 # Rocket-Run
 
-2D game built in Unity using C#
+Built in Unity using C#. A polished 2D game with sound and fx where the player scores points by navigating around rockets to reach waypoints. 
 Can be played at https://zhitonga.itch.io/rocket-run
 
-Rockets spawn in waves and move towards the player, who must evade them and reach the waypoints to score points.
 
 ![alt text](Images/gameplay.png "Gameplay")
 ![alt text](Images/highscore.png "High Score")
