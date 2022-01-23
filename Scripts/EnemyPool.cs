@@ -15,13 +15,13 @@ public class EnemyPool : MonoBehaviour
         enemyPool = new Queue<GameObject>();
         particlePool = new Queue<GameObject>();
         for (int i = 0; i < poolSize; i++) {
-            GameObject obj1 = (GameObject) Instantiate(enemyPrefab);
-            GameObject obj2 = (GameObject) particlePrefab;
-            obj1.SetActive(false);
-            obj2.SetActive(false);
+            GameObject enemy = (GameObject) Instantiate(enemyPrefab);
+            GameObject particle = (GameObject) particlePrefab;
+            enemy.SetActive(false);
+            particle.SetActive(false);
 
-            enemyPool.Enqueue(obj1);
-            particlePool.Enqueue(obj2);
+            enemyPool.Enqueue(enemy);
+            particlePool.Enqueue(particle);
         }
     }
 

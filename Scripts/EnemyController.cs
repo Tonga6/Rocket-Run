@@ -47,8 +47,7 @@ public class EnemyController : MonoBehaviour
                 spawnerManager.GetComponent<EnemyPool>().addToEnemyQueue(this.gameObject);
         }
         else
-            Move();
-        
+            Move();        
     }
     private void Move() {
         var dir = player.transform.position - transform.position;

@@ -26,22 +26,19 @@ public class Waypoints : MonoBehaviour
     private void Update()
     {   
         if (active)
-            transform.Rotate(0, 0, 50 * Time.deltaTime); //rotates 50 degrees per second around z axis
-        else
+            transform.Rotate(0, 0, 50 * Time.deltaTime); 
+        else //wait out timer before spawning new waypoint
         {
             timer -= Time.deltaTime;
             if (timer < 0)
             {
-                active = true;
-                sr.enabled = true;
-                col.enabled = true;
                 timer = cooldown;                
-                newWaypoint();
+                ChangeState();
+                NewWaypoint();
             }
-        }
-           
+        }           
     }
-    void newWaypoint()
+    void NewWaypoint()
     {
         Vector3 waypoint = Camera.main.ScreenToWorldPoint(new Vector3(Random.Range(200, Screen.width-100), Random.Range(200, Screen.height-100), 0));
         waypoint.z = 0;
@@ -49,12 +46,16 @@ public class Waypoints : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //If waypoint collides with player while active
         if (collision.gameObject.layer == 8 && active)
         {
             aud.Play();
-            active = false;
-            sr.enabled = false;
-            col.enabled = false;
+            ChangeState();
         }
+    }
+    private void ChangeState(){
+        active = active;
+        sr.enabled = !sr.enabled;
+        col.enabled = !col.enabled;
     }
 }
